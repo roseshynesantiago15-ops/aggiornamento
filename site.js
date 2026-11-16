@@ -14,7 +14,12 @@ document.querySelector("#close-poster").addEventListener("click", () => poster.c
 const navigation = document.querySelectorAll(".topbar nav a");
 
 function updateNavigation() {
-  const active = location.hash === "#council" ? "#film" : location.hash || "#home";
+  const sectionLinks = {
+    "#council": "#film",
+    "#reflections": "#reviews",
+    "#references": "#reviews"
+  };
+  const active = sectionLinks[location.hash] || location.hash || "#home";
   for (const link of navigation) {
     if (link.hash === active) link.setAttribute("aria-current", "location");
     else link.removeAttribute("aria-current");
